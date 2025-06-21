@@ -55,47 +55,47 @@
       button:active {
         background-color: hsl(0, 0%, 50%);
       }
-      .operator-btn{
+      .operator-btn {
         background-color: hsl(35, 100%, 55%);
       }
-      .operator-btn:hover{
-        background-color: hsl(35, 100%, 65%);;
+      .operator-btn:hover {
+        background-color: hsl(35, 100%, 65%);
       }
-      .operator-btn:active{
-        background-color: hsl(35, 100%, 75%);;
+      .operator-btn:active {
+        background-color: hsl(35, 100%, 75%);
       }
-      
+
       @media only screen and (max-width: 600px) {
         #calculator {
           border-radius: 10px;
           margin: 0 10px;
         }
-        
+
         #display {
           font-size: 3rem;
           padding: 15px;
           margin-top: 30px;
         }
-        
+
         #keys {
           padding: 15px;
           gap: 8px;
         }
-        
+
         button {
           width: 70px;
           height: 70px;
           font-size: 2rem;
         }
       }
-      
+
       @media only screen and (max-width: 400px) {
         button {
           width: 60px;
           height: 60px;
           font-size: 1.7rem;
         }
-        
+
         #keys {
           gap: 6px;
           padding: 10px;
@@ -112,40 +112,51 @@
         <button onclick="appendToDisplay(`7`)">7</button>
         <button onclick="appendToDisplay(`8`)">8</button>
         <button onclick="appendToDisplay(`9`)">9</button>
+
         <button onclick="appendToDisplay(`-`)" class="operator-btn">-</button>
         <button onclick="appendToDisplay(`4`)">4</button>
         <button onclick="appendToDisplay(`5`)">5</button>
         <button onclick="appendToDisplay(`6`)">6</button>
+
         <button onclick="appendToDisplay(`*`)" class="operator-btn">*</button>
         <button onclick="appendToDisplay(`1`)">1</button>
         <button onclick="appendToDisplay(`2`)">2</button>
         <button onclick="appendToDisplay(`3`)">3</button>
+
         <button onclick="appendToDisplay(`/`)" class="operator-btn">/</button>
         <button onclick="appendToDisplay(`0`)">0</button>
         <button onclick="appendToDisplay(`.`)">.</button>
         <button onclick="calculate()">=</button>
+        <button onclick="Delete()" class="operator-btn">Del</button>
+        
         <button onclick="clearDisplay()" class="operator-btn">C</button>
       </div>
     </div>
 
     <script>
       const display = document.getElementById("display");
-      function appendToDisplay(input){
+
+      function appendToDisplay(input) {
         display.value += input;
       }
 
-      function clearDisplay(){
+      function clearDisplay() {
         display.value = "";
       }
 
-      function calculate(){
-        try{
-          display.value = eval(display.value);
-        }
-        catch(error){
-          display.value = "Error";
-        }
+      function calculate() {
+        display.value = eval(display.value);
       }
-    </script>
-  </body>
-</html>
+
+      function Delete() {
+  let currentValue = display.value;
+
+  // Remove the last character using slice()
+  // slice(0, -1) creates a new string from the beginning up to, but not including, the last character
+  let newValue = currentValue.slice(0, -1);
+
+  // Update the display with the new value
+  display.value = newValue;
+}
+
+  
