@@ -19,6 +19,7 @@
         border-radius: 15px;
         max-width: 500px;
         overflow: hidden;
+        width: 100%;
       }
       #display {
         width: 100%;
@@ -29,6 +30,7 @@
         background-color: hsl(0, 0%, 20%);
         margin-top: 50px;
         color: white;
+        box-sizing: border-box;
       }
       #keys {
         display: grid;
@@ -58,11 +60,46 @@
       }
       .operator-btn:hover{
         background-color: hsl(35, 100%, 65%);;
-
       }
       .operator-btn:active{
         background-color: hsl(35, 100%, 75%);;
-
+      }
+      
+      @media only screen and (max-width: 600px) {
+        #calculator {
+          border-radius: 10px;
+          margin: 0 10px;
+        }
+        
+        #display {
+          font-size: 3rem;
+          padding: 15px;
+          margin-top: 30px;
+        }
+        
+        #keys {
+          padding: 15px;
+          gap: 8px;
+        }
+        
+        button {
+          width: 70px;
+          height: 70px;
+          font-size: 2rem;
+        }
+      }
+      
+      @media only screen and (max-width: 400px) {
+        button {
+          width: 60px;
+          height: 60px;
+          font-size: 1.7rem;
+        }
+        
+        #keys {
+          gap: 6px;
+          padding: 10px;
+        }
       }
     </style>
   </head>
@@ -95,13 +132,10 @@
       const display = document.getElementById("display");
       function appendToDisplay(input){
         display.value += input;
-
       }
 
       function clearDisplay(){
         display.value = "";
-
-
       }
 
       function calculate(){
@@ -112,8 +146,6 @@
           display.value = "Error";
         }
       }
-
-
     </script>
   </body>
 </html>
